@@ -1,0 +1,30 @@
+# Havenly
+
+> Modern properties. Prime locations. A better way to find your next home in Morocco.
+> Havenly is a real estate agency in Casablanca, Morocco, listing villas, apartments,
+> houses, townhouses and penthouses for sale in Casablanca, Rabat, Marrakech, Agadir
+> and Tangier.
+
+## Pages
+
+- [Home](https://havenly.pages.dev/): Discover your perfect home — search by location, property type and price.
+- [Properties](https://havenly.pages.dev/properties): All homes for sale, with working filters.
+- [About](https://havenly.pages.dev/about): More than just real estate — honest advice and local knowledge.
+- [Testimonials](https://havenly.pages.dev/testimonials): Real stories from happy homeowners.
+- [Blog](https://havenly.pages.dev/blog): Guides for buyers, sellers and investors.
+- [Contact](https://havenly.pages.dev/contact): Talk to a property advisor.
+- [FAQ](https://havenly.pages.dev/faq): Buying, selling, mortgages, viewings and fees.
+
+## Featured properties
+
+- Modern Villa in Casablanca — $450,000 — 4 beds, 3 baths, 320 m²
+- Luxury Apartment in Casablanca — $280,000 — 3 beds, 2 baths, 150 m²
+- Family Home in Rabat — $620,000 — 5 beds, 4 baths, 420 m²
+- Seaside Villa in Agadir — $540,000 — 4 beds, 3 baths, 380 m²
+- Penthouse in Rabat — $780,000 — 3 beds, 3 baths, 210 m²
+- Garden Townhouse in Marrakech — $395,000 — 3 beds, 2 baths, 185 m²
+
+## Contact
+
+- Email: hello@havenly.pages.dev (placeholder)
+- Phone: +91 98765 43210 (placeholder)

@@ -1,0 +1,15 @@
+{
+	"extends": "$app/tsconfig",
+	"compilerOptions": {
+		"strict": true,
+		// TS 6 does not resolve the extensionless "#lib/*" subpath import from
+		// package.json `imports` (it needs "./src/lib/*.js", which breaks .svelte
+		// imports). This paths mapping makes svelte-check resolve #lib/* for
+		// both .ts and .svelte files; Vite still resolves via package.json.
+		"paths": {
+			"#lib": ["./src/lib/index.ts"],
+			"#lib/*": ["./src/lib/*"]
+		}
+	},
+	"include": ["src", "vite.config.ts"]
+}
