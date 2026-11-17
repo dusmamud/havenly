@@ -7,13 +7,13 @@
 
 ## Pages
 
-- [Home](https://havenly.pages.dev/): Discover your perfect home — search by location, property type and price.
-- [Properties](https://havenly.pages.dev/properties): All homes for sale, with working filters.
-- [About](https://havenly.pages.dev/about): More than just real estate — honest advice and local knowledge.
-- [Testimonials](https://havenly.pages.dev/testimonials): Real stories from happy homeowners.
-- [Blog](https://havenly.pages.dev/blog): Guides for buyers, sellers and investors.
-- [Contact](https://havenly.pages.dev/contact): Talk to a property advisor.
-- [FAQ](https://havenly.pages.dev/faq): Buying, selling, mortgages, viewings and fees.
+- [Home](https://havenlly.pages.dev/): Discover your perfect home — search by location, property type and price.
+- [Properties](https://havenlly.pages.dev/properties): All homes for sale, with working filters.
+- [About](https://havenlly.pages.dev/about): More than just real estate — honest advice and local knowledge.
+- [Testimonials](https://havenlly.pages.dev/testimonials): Real stories from happy homeowners.
+- [Blog](https://havenlly.pages.dev/blog): Guides for buyers, sellers and investors.
+- [Contact](https://havenlly.pages.dev/contact): Talk to a property advisor.
+- [FAQ](https://havenlly.pages.dev/faq): Buying, selling, mortgages, viewings and fees.
 
 ## Featured properties
 
@@ -26,5 +26,5 @@
 
 ## Contact
 
-- Email: hello@havenly.pages.dev (placeholder)
+- Email: hello@havenlly.pages.dev (placeholder)
 - Phone: +91 98765 43210 (placeholder)

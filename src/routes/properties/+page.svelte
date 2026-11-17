@@ -47,7 +47,7 @@
 		itemListElement: properties.map((p, i) => ({
 			'@type': 'ListItem',
 			position: i + 1,
-			url: `https://havenly.pages.dev/properties/${p.slug}`,
+			url: `https://havenlly.pages.dev/properties/${p.slug}`,
 			name: p.title
 		}))
 	});

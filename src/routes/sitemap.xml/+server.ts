@@ -2,7 +2,7 @@ import { properties, posts } from '#lib/data/site';
 
 export const prerender = true;
 
-const base = 'https://havenly.pages.dev';
+const base = 'https://havenlly.pages.dev';
 const staticPages = [
 	'',
 	'/properties',

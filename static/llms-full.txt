@@ -6,14 +6,14 @@
 > Marrakech, Agadir and Tangier. Every listing is visited, checked and photographed
 > by the Havenly team. Prices are in US dollars.
 
-## Home — https://havenly.pages.dev/
+## Home — https://havenlly.pages.dev/
 
 Hero: "Discover Your Perfect Home" — "Modern properties. Prime locations. A better
 way to find your next home." Search by location, property type and price range.
 About section: "More Than Just Real Estate" — trusted agency, secure transactions,
 dedicated support. Featured properties and client testimonials.
 
-## Properties — https://havenly.pages.dev/properties
+## Properties — https://havenlly.pages.dev/properties
 
 Filterable by location (Casablanca, Rabat, Marrakech, Agadir), type (Villa,
 Apartment, House, Townhouse, Penthouse) and price (under $300,000; $300,000–
@@ -35,36 +35,36 @@ $500,000; over $500,000).
 Each property page has a photo gallery, key facts, features, an advisor card and
 a private-tour booking form (demo — no backend).
 
-## About — https://havenly.pages.dev/about
+## About — https://havenlly.pages.dev/about
 
 Havenly was built to make buying a home in Morocco simpler: honest prices, every
 home visited in person, one advisor from first viewing to final deed. Values:
 honest advice always; local knowledge; from first viewing to final deed.
 
-## Testimonials — https://havenly.pages.dev/testimonials
+## Testimonials — https://havenlly.pages.dev/testimonials
 
 Five-star reviews from Sarah El Mansouri (Casablanca), Karim Benali (Rabat),
 Fatima Zahra (Marrakech), Omar Haddad (Tangier), Leila Bennis (Casablanca) and
 Youssef Amrani (Agadir).
 
-## Blog — https://havenly.pages.dev/blog
+## Blog — https://havenlly.pages.dev/blog
 
 - A First-Time Buyer’s Guide to Buying a Home in Morocco
-  (https://havenly.pages.dev/blog/first-time-buyers-guide-morocco)
+  (https://havenlly.pages.dev/blog/first-time-buyers-guide-morocco)
 - Is Moroccan Real Estate a Good Investment in 2026?
-  (https://havenly.pages.dev/blog/moroccan-real-estate-investment-2026)
+  (https://havenlly.pages.dev/blog/moroccan-real-estate-investment-2026)
 - How to Stage Your Home to Sell Faster — and for More
-  (https://havenly.pages.dev/blog/stage-your-home-to-sell-faster)
+  (https://havenlly.pages.dev/blog/stage-your-home-to-sell-faster)
 
-## FAQ — https://havenly.pages.dev/faq
+## FAQ — https://havenlly.pages.dev/faq
 
 How buying with Havenly works; fees (around 6–7% on top of the price for notaire
 fees, registration and commission); mortgages for non-residents; private viewings
 and video tours; typical timeline of six to ten weeks; selling with Havenly;
 cities covered; documents needed.
 
-## Contact — https://havenly.pages.dev/contact
+## Contact — https://havenlly.pages.dev/contact
 
-Email hello@havenly.pages.dev (placeholder), phone +91 98765 43210 (placeholder),
+Email hello@havenlly.pages.dev (placeholder), phone +91 98765 43210 (placeholder),
 office 12 Boulevard d’Anfa, Casablanca. Hours Monday–Saturday, 9:00–18:00.
 Contact, tour-booking and newsletter forms are demos with no backend.

@@ -20,12 +20,12 @@
 			'@type': 'BlogPosting',
 			headline: post.title,
 			description: post.excerpt,
-			image: `https://havenly.pages.dev${post.image}`,
+			image: `https://havenlly.pages.dev${post.image}`,
 			datePublished: post.date,
 			wordCount,
 			author: { '@type': 'Organization', name: 'Havenly', url: site.url + '/' },
 			publisher: { '@type': 'Organization', name: 'Havenly', url: site.url + '/' },
-			mainEntityOfPage: `https://havenly.pages.dev/blog/${post.slug}`
+			mainEntityOfPage: `https://havenlly.pages.dev/blog/${post.slug}`
 		})
 	);
 </script>
@@ -36,7 +36,7 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{post.title} | Havenly Blog" />
 	<meta property="og:description" content={post.excerpt} />
-	<meta property="og:image" content="https://havenly.pages.dev{post.image}" />
+	<meta property="og:image" content="https://havenlly.pages.dev{post.image}" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<script type="application/ld+json">${blogJsonLd}</script>`}
 </svelte:head>

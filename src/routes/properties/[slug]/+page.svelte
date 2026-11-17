@@ -41,13 +41,13 @@
 			'@type': 'Product',
 			name: property.title,
 			description: property.description,
-			image: `https://havenly.pages.dev${property.image}`,
+			image: `https://havenlly.pages.dev${property.image}`,
 			offers: {
 				'@type': 'Offer',
 				price: property.price,
 				priceCurrency: 'USD',
 				availability: 'https://schema.org/InStock',
-				url: `https://havenly.pages.dev/properties/${property.slug}`
+				url: `https://havenlly.pages.dev/properties/${property.slug}`
 			},
 			brand: { '@type': 'Brand', name: 'Havenly' }
 		})
@@ -57,18 +57,18 @@
 			'@context': 'https://schema.org',
 			'@type': 'BreadcrumbList',
 			itemListElement: [
-				{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://havenly.pages.dev/' },
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://havenlly.pages.dev/' },
 				{
 					'@type': 'ListItem',
 					position: 2,
 					name: 'Properties',
-					item: 'https://havenly.pages.dev/properties'
+					item: 'https://havenlly.pages.dev/properties'
 				},
 				{
 					'@type': 'ListItem',
 					position: 3,
 					name: property.title,
-					item: `https://havenly.pages.dev/properties/${property.slug}`
+					item: `https://havenlly.pages.dev/properties/${property.slug}`
 				}
 			]
 		})
@@ -81,7 +81,7 @@
 	<meta property="og:type" content="product" />
 	<meta property="og:title" content="{property.title} — {formatPrice(property.price)} | Havenly" />
 	<meta property="og:description" content={property.description} />
-	<meta property="og:image" content="https://havenly.pages.dev{property.image}" />
+	<meta property="og:image" content="https://havenlly.pages.dev{property.image}" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<script type="application/ld+json">${productJsonLd}</script>`}
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->

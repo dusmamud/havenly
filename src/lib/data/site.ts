@@ -3,9 +3,9 @@
 export const site = {
 	name: 'Havenly',
 	tagline: 'Building better tomorrows, one home at a time.',
-	domain: 'havenly.pages.dev',
-	url: 'https://havenly.pages.dev',
-	email: 'hello@havenly.pages.dev', // placeholder — replace with the real inbox
+	domain: 'havenlly.pages.dev',
+	url: 'https://havenlly.pages.dev',
+	email: 'hello@havenlly.pages.dev', // placeholder — replace with the real inbox
 	phone: '+91 98765 43210', // placeholder — replace with the real number
 	phoneDisplay: '+91 98765 43210',
 	address: '12 Boulevard d’Anfa, Casablanca, Morocco', // placeholder
@@ -13,7 +13,7 @@ export const site = {
 		name: 'Yasmine El Fassi',
 		role: 'Senior Property Advisor',
 		phone: '+91 98765 43210',
-		email: 'hello@havenly.pages.dev',
+		email: 'hello@havenlly.pages.dev',
 		experience: '12 years helping families find home in Morocco'
 	},
 	socials: { instagram: '#', facebook: '#', youtube: '#', linkedin: '#' } // placeholders — real URLs not shared yet

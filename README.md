@@ -2,7 +2,7 @@
 
 Modern real estate site built with **Svelte 5 + SvelteKit 3 + Vite + TypeScript + Tailwind CSS 4** (static export via `@sveltejs/adapter-static`), deployed on Cloudflare Pages.
 
-Live: https://havenly.pages.dev
+Live: https://havenlly.pages.dev
 
 ## Pages
 
