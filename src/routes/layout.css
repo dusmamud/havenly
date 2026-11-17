@@ -120,15 +120,15 @@ body {
 	}
 }
 
-/* Hero entrance — staggered rise. Elements render in their final state;
-   the animation only plays on first paint. Reduced motion = no animation. */
+/* Hero entrance — rise only, never a fade: the headline is fully dark from
+   the first paint and only moves up. Opacity in the `from` state made the
+   headline pale and unreadable for the first second (caught live 2026-11-18).
+   Reduced motion = no animation. */
 @keyframes hero-rise {
 	from {
-		opacity: 0;
 		transform: translateY(22px);
 	}
 	to {
-		opacity: 1;
 		transform: none;
 	}
 }

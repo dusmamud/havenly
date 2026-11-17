@@ -431,7 +431,8 @@
 				{/if}
 			</div>
 
-			<div class="rounded-3xl bg-pine p-6 text-white lg:sticky lg:top-24">
+			<div class="space-y-5 lg:sticky lg:top-28">
+			<div class="rounded-3xl bg-pine p-6 text-white">
 				<h2 class="font-display text-xl font-semibold">Your advisor</h2>
 				<div class="mt-4 flex items-center gap-3">
 					<img
@@ -493,6 +494,7 @@
 					Run my numbers →
 				</a>
 			</div>
+		</div>
 		</aside>
 	</div>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cities, formatPrice } from '#lib/data/site';
+	import { cities, cityStats, formatPrice } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
 
 	const itemListJsonLd = JSON.stringify({
@@ -39,6 +39,7 @@
 
 	<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
 		{#each cities as city, i (city.slug)}
+			{@const s = cityStats(city.slug)}
 			<a
 				href="/areas/{city.slug}"
 				class="reveal group relative block overflow-hidden rounded-3xl {i < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}"
@@ -62,8 +63,8 @@
 					<h2 class="font-display text-2xl font-semibold text-white">{city.name}</h2>
 					<p class="mt-1 text-sm text-white/85">{city.tagline}</p>
 					<p class="mt-2 text-sm font-semibold text-white">
-						{city.homes > 0
-							? `${city.homes} ${city.homes === 1 ? 'home' : 'homes'} · from ${formatPrice(city.avgPrice)}`
+						{s.count > 0
+							? `${s.count} ${s.count === 1 ? 'home' : 'homes'} · from ${formatPrice(s.fromPrice!)}`
 							: 'New listings coming soon'}
 						<span class="ml-1 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
 					</p>

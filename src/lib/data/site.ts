@@ -418,7 +418,7 @@ export const cities: City[] = [
 		tagline: 'The economic capital — ocean air, Art Deco streets, serious value.',
 		description:
 			'Morocco’s largest city and its economic engine. Anfa and Maârif offer modern apartments and villas minutes from the Corniche, while the old medina and the Hassan II Mosque give the city its soul. Strong rental demand from professionals keeps well-located homes working hard.',
-		homes: 3,
+		homes: 2,
 		avgPrice: 365000,
 		image: '/images/city-casablanca.jpg',
 		highlights: ['Corniche beachfront', 'Tramway + Casa-Voyageurs station', 'International schools', 'Hassan II Mosque']
@@ -468,6 +468,16 @@ export const cities: City[] = [
 		highlights: ['Tanger Med port', 'Strait of Gibraltar views', 'Historic medina', 'New business districts']
 	}
 ];
+
+/** Listing stats per city, derived from `properties` — counts and "from" prices must never be hardcoded, or cards drift from the real listings. */
+export function cityStats(slug: string): { count: number; fromPrice: number | null } {
+	const city = cities.find((c) => c.slug === slug);
+	const list = city ? properties.filter((p) => p.city === city.name) : [];
+	return {
+		count: list.length,
+		fromPrice: list.length > 0 ? Math.min(...list.map((p) => p.price)) : null
+	};
+}
 
 // Mock figures for the About page — replace with real numbers before launch.
 export const stats = [
