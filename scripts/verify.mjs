@@ -16,6 +16,20 @@ const routes = [
 	'/properties/garden-townhouse-marrakech',
 	'/about',
 	'/testimonials',
+	'/saved',
+	'/areas',
+	'/areas/casablanca',
+	'/areas/rabat',
+	'/areas/marrakech',
+	'/areas/agadir',
+	'/areas/tangier',
+	'/tools',
+	'/tools/mortgage-calculator',
+	'/valuation',
+	'/agents',
+	'/compare',
+	'/sold',
+	'/services',
 	'/blog',
 	'/blog/first-time-buyers-guide-morocco',
 	'/blog/moroccan-real-estate-investment-2026',
@@ -28,7 +42,7 @@ const routes = [
 const viewports = [
 	{ name: 'mobile', width: 390, height: 844 },
 	{ name: 'desktop', width: 1440, height: 900 }
-];
+].filter((vp) => !process.env.VP || process.env.VP === vp.name);
 const out = '.screenshots';
 fs.mkdirSync(out, { recursive: true });
 
@@ -88,18 +102,30 @@ async function checkPage(page, route, vpName) {
 		const broken = [...document.images]
 			.filter((i) => !i.complete || i.naturalWidth === 0)
 			.map((i) => i.getAttribute('src'));
+		// Reveal audit: after scrolling the whole page, no .reveal-hidden
+		// element may remain inside the viewport — it would be stuck invisible.
+		const stuckHidden = [...document.querySelectorAll('.reveal-hidden')].filter((el) => {
+			const r = el.getBoundingClientRect();
+			return r.bottom > 0 && r.top < window.innerHeight;
+		}).length;
 		return {
 			scrollW: document.documentElement.scrollWidth,
 			clientW: document.documentElement.clientWidth,
 			overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
 			broken,
 			h1: document.querySelectorAll('h1').length,
-			title: document.title
+			title: document.title,
+			stuckHidden
 		};
 	});
 	const status = res?.status() ?? 0;
 	const bad =
-		status !== 200 || metrics.overflow > 0 || errors.length || failedReqs.length || metrics.broken.length;
+		status !== 200 ||
+		metrics.overflow > 0 ||
+		errors.length ||
+		failedReqs.length ||
+		metrics.broken.length ||
+		metrics.stuckHidden > 0;
 	if (bad) failures++;
 	summary.push({
 		route,
@@ -109,6 +135,7 @@ async function checkPage(page, route, vpName) {
 		consoleErrors: errors.length,
 		failedReqs: failedReqs.length,
 		brokenImgs: metrics.broken.length,
+		stuckHidden: metrics.stuckHidden,
 		h1: metrics.h1
 	});
 	if (bad)
@@ -116,7 +143,14 @@ async function checkPage(page, route, vpName) {
 			'FAIL',
 			route,
 			vpName,
-			JSON.stringify({ status, overflow: metrics.overflow, errors, failedReqs, broken: metrics.broken })
+			JSON.stringify({
+				status,
+				overflow: metrics.overflow,
+				errors,
+				failedReqs,
+				broken: metrics.broken,
+				stuckHidden: metrics.stuckHidden
+			})
 		);
 	return metrics;
 }

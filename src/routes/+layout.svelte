@@ -5,16 +5,31 @@
 	import Footer from '#lib/components/Footer.svelte';
 	import { page } from '$app/state';
 	import { site } from '#lib/data/site';
+	import { initSaved } from '#lib/saved.svelte';
+	import { initCompare } from '#lib/compare.svelte';
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();
+
+	// Load saved homes + comparison tray from localStorage once, browser-only.
+	$effect(() => {
+		initSaved();
+		initCompare();
+	});
 
 	// Per-section OG card, chosen from the current route.
 	const ogMap: [RegExp, string][] = [
 		[/^\/properties/, 'og-properties.png'],
 		[/^\/about/, 'og-about.png'],
 		[/^\/blog/, 'og-blog.png'],
-		[/^\/testimonials/, 'og-about.png']
+		[/^\/testimonials/, 'og-about.png'],
+		[/^\/tools/, 'og-tools.png'],
+		[/^\/valuation/, 'og-valuation.png'],
+		[/^\/agents/, 'og-agents.png'],
+		[/^\/compare/, 'og-compare.png'],
+		[/^\/sold/, 'og-sold.png'],
+		[/^\/services/, 'og-services.png'],
+		[/^\/areas/, 'og-areas.png']
 	];
 	const ogFile = $derived(ogMap.find(([re]) => re.test(page.url.pathname))?.[1] ?? 'og-default.png');
 	const ogUrl = $derived(`${site.url}/images/og/${ogFile}`);
@@ -64,6 +79,12 @@
 	{@html `<script type="application/ld+json">${websiteJsonLd}</script>`}
 </svelte:head>
 
+<a
+	href="#main-content"
+	class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:rounded-full focus:bg-pine focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+>
+	Skip to content
+</a>
 <Header />
 <main id="main-content">{@render children()}</main>
 <Footer />

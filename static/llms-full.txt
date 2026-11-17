@@ -16,8 +16,9 @@ dedicated support. Featured properties and client testimonials.
 ## Properties — https://havenlly.pages.dev/properties
 
 Filterable by location (Casablanca, Rabat, Marrakech, Agadir), type (Villa,
-Apartment, House, Townhouse, Penthouse) and price (under $300,000; $300,000–
-$500,000; over $500,000).
+Apartment, House, Townhouse, Penthouse), price (under $300,000; $300,000–
+$500,000; over $500,000) and bedrooms (2+, 3+, 4+, 5+). Sort by newest, price
+low-to-high, price high-to-low or largest area. Grid or list view.
 
 1. Modern Villa in Casablanca — $450,000 — 4 beds, 3 baths, 320 m² — Anfa.
    Private pool, floor-to-ceiling glass, smart home.
@@ -32,8 +33,47 @@ $500,000; over $500,000).
 6. Garden Townhouse in Marrakech — $395,000 — 3 beds, 2 baths, 185 m² — Guéliz.
    Private garden with olive tree, rooftop terrace.
 
-Each property page has a photo gallery, key facts, features, an advisor card and
-a private-tour booking form (demo — no backend).
+Each property page has a photo gallery with lightbox, key facts, features, a
+floor plan (schematic SVG), a map & nearby list (schools, hospitals, tram and
+leisure with distances), an indicative monthly payment, an advisor card with
+call and WhatsApp buttons, a private-tour booking form (demo — no backend),
+a video tour, and similar homes. On mobile there is a sticky bottom bar with
+Call, WhatsApp and Save.
+
+## Areas — https://havenlly.pages.dev/areas
+
+Neighbourhood guides: Casablanca, Rabat, Marrakech, Agadir and Tangier — each
+with an about section, highlights, at-a-glance stats and the listings in that
+city.
+
+## Tools — https://havenlly.pages.dev/tools
+
+- Mortgage calculator (https://havenlly.pages.dev/tools/mortgage-calculator):
+  home price, down payment, rate and term sliders → monthly EMI, total
+  interest, total paid and a principal-vs-interest split.
+- Home valuation (https://havenlly.pages.dev/valuation): city, type, bedrooms,
+  area and condition → an estimated value range.
+- Compare homes (https://havenlly.pages.dev/compare): up to three homes side
+  by side — price, price per m², beds, baths, area, type and city.
+- Saved homes (https://havenlly.pages.dev/saved): favourites stored in the
+  browser (localStorage), no login.
+
+## Agents — https://havenlly.pages.dev/agents
+
+Yasmine El Fassi (Senior Property Advisor, 68 deals), Omar Benjelloun
+(Buyer's Agent, 41 deals) and Sofia Marchetti (Sales & Investment Advisor,
+37 deals). Photos and contact details are illustrative.
+
+## Recently sold — https://havenlly.pages.dev/sold
+
+Modern Villa in Casablanca — sold $435,000 (September 2026, 24 days);
+Luxury Apartment — sold $272,000 (August 2026, 18 days); Garden Townhouse in
+Marrakech — sold $388,000 (October 2026, 31 days).
+
+## Services — https://havenlly.pages.dev/services
+
+Buy a home, sell your home (free valuation), rent & relocate, and invest —
+each with what is included and a call to action.
 
 ## About — https://havenlly.pages.dev/about
 

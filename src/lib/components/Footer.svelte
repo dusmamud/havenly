@@ -48,6 +48,11 @@
 				<ul class="mt-4 space-y-2.5 text-sm text-white/70">
 					<li><a class="hover:text-white" href="/">Home</a></li>
 					<li><a class="hover:text-white" href="/properties">Properties</a></li>
+					<li><a class="hover:text-white" href="/areas">Areas</a></li>
+					<li><a class="hover:text-white" href="/tools">Tools</a></li>
+					<li><a class="hover:text-white" href="/agents">Our Agents</a></li>
+					<li><a class="hover:text-white" href="/sold">Sold Homes</a></li>
+					<li><a class="hover:text-white" href="/services">Services</a></li>
 					<li><a class="hover:text-white" href="/about">About</a></li>
 					<li><a class="hover:text-white" href="/testimonials">Testimonials</a></li>
 					<li><a class="hover:text-white" href="/blog">Blog</a></li>

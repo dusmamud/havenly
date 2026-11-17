@@ -8,7 +8,12 @@
 ## Pages
 
 - [Home](https://havenlly.pages.dev/): Discover your perfect home — search by location, property type and price.
-- [Properties](https://havenlly.pages.dev/properties): All homes for sale, with working filters.
+- [Properties](https://havenlly.pages.dev/properties): All homes for sale, with working filters — sort by price or area, filter by bedrooms, grid or list view. Each listing has a photo gallery with lightbox, floor plan, map & nearby, monthly-payment estimate and a video tour.
+- [Areas](https://havenlly.pages.dev/areas): Neighbourhood guides for Casablanca, Rabat, Marrakech, Agadir and Tangier, with listings in each city.
+- [Tools](https://havenlly.pages.dev/tools): Free tools — [mortgage calculator](https://havenlly.pages.dev/tools/mortgage-calculator) (monthly EMI), [home valuation](https://havenlly.pages.dev/valuation) (estimated value range), [compare homes](https://havenlly.pages.dev/compare) (up to 3 side by side), [saved homes](https://havenlly.pages.dev/saved) (your favourites).
+- [Our Agents](https://havenlly.pages.dev/agents): Yasmine El Fassi, Omar Benjelloun and Sofia Marchetti — senior property advisors.
+- [Recently Sold](https://havenlly.pages.dev/sold): Homes Havenly recently sold, with final prices and days on market.
+- [Services](https://havenlly.pages.dev/services): Buying, selling, renting & relocating, and investing.
 - [About](https://havenlly.pages.dev/about): More than just real estate — honest advice and local knowledge.
 - [Testimonials](https://havenlly.pages.dev/testimonials): Real stories from happy homeowners.
 - [Blog](https://havenlly.pages.dev/blog): Guides for buyers, sellers and investors.

@@ -70,6 +70,13 @@ CARDS = [
     (os.path.join(IMG, 'prop-villa-casablanca.jpg'), ['Homes for Sale', 'in Morocco'], 'Villas · Apartments · Family homes', 'og-properties.png'),
     (os.path.join(IMG, 'interior-living.jpg'), ['More Than Just', 'Real Estate'], 'Trusted agency · Secure transactions', 'og-about.png'),
     (os.path.join(IMG, 'blog-buying-guide.jpg'), ['Guides for Buyers,', 'Sellers & Investors'], 'Real estate advice, written plainly', 'og-blog.png'),
+    (os.path.join(IMG, 'interior-living.jpg'), ['Mortgage', 'Calculator'], 'Know your monthly payment', 'og-tools.png'),
+    (os.path.join(IMG, 'prop-villa-casablanca.jpg'), ['What Is Your', 'Home Worth?'], 'Free estimate in minutes', 'og-valuation.png'),
+    (os.path.join(IMG, 'agent-yasmine.jpg'), ['Meet the Team', 'Behind Havenly'], 'Advisors who know Morocco', 'og-agents.png'),
+    (os.path.join(IMG, 'hero-villa.jpg'), ['Compare Homes', 'Side by Side'], 'Price, size and features', 'og-compare.png'),
+    (os.path.join(IMG, 'city-casablanca.jpg'), ['Recently Sold', 'in Morocco'], 'Real prices, real results', 'og-sold.png'),
+    (os.path.join(IMG, 'city-rabat.jpg'), ['Buy · Sell · Rent', '· Invest'], 'One team, every move', 'og-services.png'),
+    (os.path.join(IMG, 'city-marrakech.jpg'), ['Explore by City', 'in Morocco'], 'Casablanca · Rabat · Marrakech', 'og-areas.png'),
 ]
 
 for bg, title, sub, name in CARDS:

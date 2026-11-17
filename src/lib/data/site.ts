@@ -37,6 +37,7 @@ export interface Property {
 	status: 'For Sale';
 	description: string;
 	features: string[];
+	nearby: { name: string; kind: string; distance: string }[];
 }
 
 export const properties: Property[] = [
@@ -63,6 +64,12 @@ export const properties: Property[] = [
 			'Landscaped garden terrace',
 			'Double garage',
 			'Smart-home lighting and security'
+		],
+		nearby: [
+			{ name: 'International School of Casablanca', kind: 'School', distance: '1.2 km' },
+			{ name: 'Clinique Badr', kind: 'Hospital', distance: '2.1 km' },
+			{ name: 'Tramway — Anfa Park station', kind: 'Metro & tram', distance: '800 m' },
+			{ name: 'Corniche beach', kind: 'Leisure', distance: '1.8 km' }
 		]
 	},
 	{
@@ -88,6 +95,12 @@ export const properties: Property[] = [
 			'Primary suite with dressing room',
 			'Balcony with city views',
 			'Walking distance to the tram'
+		],
+		nearby: [
+			{ name: 'Lycée Lyautey', kind: 'School', distance: '900 m' },
+			{ name: 'Clinique Maârif', kind: 'Hospital', distance: '1.4 km' },
+			{ name: 'Tramway — Place de la Ligue Arabe', kind: 'Metro & tram', distance: '400 m' },
+			{ name: 'Parc de la Ligue Arabe', kind: 'Leisure', distance: '600 m' }
 		]
 	},
 	{
@@ -113,6 +126,12 @@ export const properties: Property[] = [
 			'Home office nook',
 			'Double garage and storage',
 			'Close to international schools'
+		],
+		nearby: [
+			{ name: 'Rabat American School', kind: 'School', distance: '1.6 km' },
+			{ name: 'Hôpital Militaire Mohammed V', kind: 'Hospital', distance: '2.4 km' },
+			{ name: 'Gare Agdal (high-speed rail)', kind: 'Metro & tram', distance: '1.1 km' },
+			{ name: 'Jardin d’Essais Botaniques', kind: 'Leisure', distance: '1.9 km' }
 		]
 	},
 	{
@@ -138,6 +157,12 @@ export const properties: Property[] = [
 			'Outdoor kitchen and dining',
 			'Five minutes from the beach',
 			'Air conditioning throughout'
+		],
+		nearby: [
+			{ name: 'École Française d’Agadir', kind: 'School', distance: '2.0 km' },
+			{ name: 'Clinique Al Manar', kind: 'Hospital', distance: '2.8 km' },
+			{ name: 'Agadir Marina', kind: 'Leisure', distance: '1.5 km' },
+			{ name: 'Plage d’Agadir', kind: 'Leisure', distance: '800 m' }
 		]
 	},
 	{
@@ -163,6 +188,12 @@ export const properties: Property[] = [
 			'Two secure parking spaces',
 			'Three bedrooms, three bathrooms',
 			'Building gym and concierge'
+		],
+		nearby: [
+			{ name: 'Université Mohammed V', kind: 'School', distance: '1.3 km' },
+			{ name: 'CHU Ibn Sina', kind: 'Hospital', distance: '2.2 km' },
+			{ name: 'Tramway — Agdal station', kind: 'Metro & tram', distance: '500 m' },
+			{ name: 'Médina & Kasbah des Oudayas', kind: 'Leisure', distance: '2.6 km' }
 		]
 	},
 	{
@@ -188,6 +219,12 @@ export const properties: Property[] = [
 			'Rooftop terrace',
 			'Walking distance to cafés and galleries',
 			'Furnished kitchen included'
+		],
+		nearby: [
+			{ name: 'École Majorelle', kind: 'School', distance: '700 m' },
+			{ name: 'Clinique du Sud', kind: 'Hospital', distance: '1.8 km' },
+			{ name: 'Gare de Marrakech', kind: 'Metro & tram', distance: '2.0 km' },
+			{ name: 'Jardin Majorelle', kind: 'Leisure', distance: '1.1 km' }
 		]
 	}
 ];
@@ -362,6 +399,76 @@ export const faqs: Faq[] = [
 export const locations = ['Casablanca', 'Rabat', 'Marrakech', 'Agadir'];
 export const propertyTypes: PropertyType[] = ['Villa', 'Apartment', 'House', 'Townhouse', 'Penthouse'];
 
+// City guides — images generated for the Explore by City section.
+export interface City {
+	slug: string;
+	name: string;
+	tagline: string;
+	description: string;
+	homes: number;
+	avgPrice: number;
+	image: string;
+	highlights: string[];
+}
+
+export const cities: City[] = [
+	{
+		slug: 'casablanca',
+		name: 'Casablanca',
+		tagline: 'The economic capital — ocean air, Art Deco streets, serious value.',
+		description:
+			'Morocco’s largest city and its economic engine. Anfa and Maârif offer modern apartments and villas minutes from the Corniche, while the old medina and the Hassan II Mosque give the city its soul. Strong rental demand from professionals keeps well-located homes working hard.',
+		homes: 3,
+		avgPrice: 365000,
+		image: '/images/city-casablanca.jpg',
+		highlights: ['Corniche beachfront', 'Tramway + Casa-Voyageurs station', 'International schools', 'Hassan II Mosque']
+	},
+	{
+		slug: 'rabat',
+		name: 'Rabat',
+		tagline: 'The calm capital — leafy avenues, embassies and family streets.',
+		description:
+			'The capital trades Casablanca’s rush for gardens, wide boulevards and a slower pace. Souissi and Agdal are the addresses families ask for: quiet streets, international schools, and the Agdal station linking you to the whole country by high-speed rail.',
+		homes: 2,
+		avgPrice: 700000,
+		image: '/images/city-rabat.jpg',
+		highlights: ['Agdal high-speed rail', 'International schools', 'Kasbah des Oudayas', 'Green, walkable districts']
+	},
+	{
+		slug: 'marrakech',
+		name: 'Marrakech',
+		tagline: 'The red city — medina magic, riads and desert light.',
+		description:
+			'Marrakech is where buyers come for the light. Guéliz offers modern townhouses and apartments near cafés and galleries; the medina hides riads behind unassuming doors. Short-term rental demand is the strongest in the country — and so is the competition for the best streets.',
+		homes: 1,
+		avgPrice: 395000,
+		image: '/images/city-marrakech.jpg',
+		highlights: ['Jemaa el-Fnaa + medina', 'Strong short-term rental market', 'Guéliz galleries and cafés', 'Atlas mountain views']
+	},
+	{
+		slug: 'agadir',
+		name: 'Agadir',
+		tagline: 'Sun, surf and a 10 km beach — the resort city that keeps growing.',
+		description:
+			'Built for the sun, Agadir pairs a long sandy bay with modern neighbourhoods like Founty. Seaside villas and apartments here draw both holiday buyers and long-stay renters, and the new marina and promenade keep the city moving forward.',
+		homes: 1,
+		avgPrice: 540000,
+		image: '/images/city-agadir.jpg',
+		highlights: ['10 km sandy beach', 'Marina and promenade', 'Founty villas', '300 days of sun a year']
+	},
+	{
+		slug: 'tangier',
+		name: 'Tangier',
+		tagline: 'Where two seas meet — the port city on the rise.',
+		description:
+			'Tangier looks to Europe across the strait, and its port, free zones and new districts have made it one of Morocco’s fastest-moving markets. The old town and the bay give it character; the new developments give it room to grow.',
+		homes: 0,
+		avgPrice: 420000,
+		image: '/images/city-tangier.jpg',
+		highlights: ['Tanger Med port', 'Strait of Gibraltar views', 'Historic medina', 'New business districts']
+	}
+];
+
 // Mock figures for the About page — replace with real numbers before launch.
 export const stats = [
 	{ value: '120+', label: 'Homes matched' },
@@ -383,6 +490,69 @@ export const values = [
 		title: 'From first viewing to final deed',
 		body: 'One advisor from the first call to the day you get the keys, including the notaire, the mortgage and the paperwork in between.'
 	}
+];
+
+// Team — mock advisors, photos generated. Replace with real people before launch.
+export interface Agent {
+	name: string;
+	role: string;
+	bio: string;
+	phone: string;
+	email: string;
+	image: string;
+	areas: string[];
+	languages: string[];
+	deals: number;
+}
+
+export const agents: Agent[] = [
+	{
+		name: 'Yasmine El Fassi',
+		role: 'Senior Property Advisor',
+		bio: 'Twelve years matching families with homes across Casablanca and Rabat. Yasmine leads every Havenly purchase from first call to final deed — and she will tell you plainly when a home is not right for you.',
+		phone: '+91 98765 43210',
+		email: 'hello@havenlly.pages.dev',
+		image: '/images/agent-yasmine.jpg',
+		areas: ['Casablanca', 'Rabat'],
+		languages: ['English', 'French', 'Arabic'],
+		deals: 68
+	},
+	{
+		name: 'Omar Benjelloun',
+		role: 'Buyer’s Agent',
+		bio: 'Omar knows Agadir and Tangier street by street. He specialises in first-time buyers and families relocating to Morocco — shortlists that fit the budget, viewings that respect your time, and offers backed by real comparable sales.',
+		phone: '+91 98765 43211',
+		email: 'omar@havenlly.pages.dev',
+		image: '/images/agent-omar.jpg',
+		areas: ['Agadir', 'Tangier'],
+		languages: ['English', 'French', 'Arabic'],
+		deals: 41
+	},
+	{
+		name: 'Sofia Marchetti',
+		role: 'Sales & Investment Advisor',
+		bio: 'Sofia advises buyers who also want their home to work as an investment — rental yields, occupancy, and the neighbourhoods where demand keeps growing. She covers Marrakech and the short-term rental market end to end.',
+		phone: '+91 98765 43212',
+		email: 'sofia@havenlly.pages.dev',
+		image: '/images/agent-sofia.jpg',
+		areas: ['Marrakech', 'Casablanca'],
+		languages: ['English', 'French', 'Italian'],
+		deals: 37
+	}
+];
+
+// Recently sold — mock results (same homes as the listings, with sold prices).
+export interface SoldHome {
+	slug: string;
+	soldPrice: number;
+	soldDate: string;
+	daysOnMarket: number;
+}
+
+export const soldHomes: SoldHome[] = [
+	{ slug: 'modern-villa-casablanca', soldPrice: 435000, soldDate: 'September 2026', daysOnMarket: 24 },
+	{ slug: 'luxury-apartment', soldPrice: 272000, soldDate: 'August 2026', daysOnMarket: 18 },
+	{ slug: 'garden-townhouse-marrakech', soldPrice: 388000, soldDate: 'October 2026', daysOnMarket: 31 }
 ];
 
 export function formatPrice(n: number): string {

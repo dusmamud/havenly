@@ -101,12 +101,12 @@ body {
    then reveals it on intersection. No-JS / reduced-motion = always visible. */
 .reveal {
 	transition:
-		opacity 0.7s ease,
-		transform 0.7s ease;
+		opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal-hidden {
 	opacity: 0;
-	transform: translateY(14px);
+	transform: translateY(24px);
 }
 @media (prefers-reduced-motion: reduce) {
 	.reveal,
@@ -117,5 +117,60 @@ body {
 	}
 	html {
 		scroll-behavior: auto;
+	}
+}
+
+/* Hero entrance — staggered rise. Elements render in their final state;
+   the animation only plays on first paint. Reduced motion = no animation. */
+@keyframes hero-rise {
+	from {
+		opacity: 0;
+		transform: translateY(22px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.hero-anim {
+	animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Slow Ken Burns zoom on the hero photo — motion that guides the eye
+   without competing with the photography. */
+@keyframes kenburns {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.07);
+	}
+}
+.kenburns {
+	animation: kenburns 22s ease-out both;
+	transform-origin: 62% 50%;
+}
+
+/* Marquee strip — slow, continuous, pauses on hover. */
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+.marquee-track {
+	animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-anim,
+	.kenburns,
+	.marquee-track {
+		animation: none;
 	}
 }

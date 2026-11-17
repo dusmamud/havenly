@@ -1,4 +1,4 @@
-import { properties, posts } from '#lib/data/site';
+import { properties, posts, cities } from '#lib/data/site';
 
 export const prerender = true;
 
@@ -6,8 +6,17 @@ const base = 'https://havenlly.pages.dev';
 const staticPages = [
 	'',
 	'/properties',
+	'/areas',
+	'/tools',
+	'/tools/mortgage-calculator',
+	'/valuation',
+	'/agents',
+	'/compare',
+	'/sold',
+	'/services',
 	'/about',
 	'/testimonials',
+	'/saved',
 	'/blog',
 	'/contact',
 	'/faq',
@@ -19,6 +28,7 @@ export function GET() {
 	const urls = [
 		...staticPages,
 		...properties.map((p) => `/properties/${p.slug}`),
+		...cities.map((c) => `/areas/${c.slug}`),
 		...posts.map((p) => `/blog/${p.slug}`)
 	];
 	const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls

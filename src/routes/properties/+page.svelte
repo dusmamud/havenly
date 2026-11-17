@@ -8,6 +8,9 @@
 	let location = $state('any');
 	let type = $state('any');
 	let price = $state('any');
+	let beds = $state('any');
+	let sort = $state('newest');
+	let view = $state<'grid' | 'list'>('grid');
 	let initialised = $state(false);
 
 	// Read the query string once, in the browser only — never during prerender.
@@ -35,10 +38,19 @@
 			(p) =>
 				(location === 'any' || p.city === location) &&
 				(type === 'any' || p.type === type) &&
+				(beds === 'any' || p.beds >= Number(beds)) &&
 				matchesPrice(p.price, price)
 		)
 	);
-	const hasFilter = $derived(location !== 'any' || type !== 'any' || price !== 'any');
+	const sorted = $derived.by(() => {
+		const list = [...filtered];
+		if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+		else if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+		else if (sort === 'area') list.sort((a, b) => b.area - a.area);
+		// 'newest' keeps the curated order.
+		return list;
+	});
+	const hasFilter = $derived(location !== 'any' || type !== 'any' || price !== 'any' || beds !== 'any');
 
 	const itemListJsonLd = JSON.stringify({
 		'@context': 'https://schema.org',
@@ -90,8 +102,55 @@
 
 	<div class="mt-8 flex flex-wrap items-center justify-between gap-3">
 		<p class="text-sm text-muted" role="status">
-			Showing <strong class="font-semibold text-pine">{filtered.length}</strong> of {properties.length} properties
+			Showing <strong class="font-semibold text-pine">{sorted.length}</strong> of {properties.length} properties
 		</p>
+		<div class="flex flex-wrap items-center gap-2">
+			<label for="beds-filter" class="text-sm font-medium text-pine">Beds</label>
+			<select
+				id="beds-filter"
+				bind:value={beds}
+				class="rounded-full border border-[#e9e1d0] bg-white px-3 py-2 text-sm text-pine focus:border-pine focus:outline-none"
+			>
+				<option value="any">Any</option>
+				<option value="2">2+</option>
+				<option value="3">3+</option>
+				<option value="4">4+</option>
+				<option value="5">5+</option>
+			</select>
+			<label for="sort" class="text-sm font-medium text-pine">Sort</label>
+			<select
+				id="sort"
+				bind:value={sort}
+				class="rounded-full border border-[#e9e1d0] bg-white px-3 py-2 text-sm text-pine focus:border-pine focus:outline-none"
+			>
+				<option value="newest">Newest</option>
+				<option value="price-asc">Price: low to high</option>
+				<option value="price-desc">Price: high to low</option>
+				<option value="area">Largest area</option>
+			</select>
+			<div class="flex overflow-hidden rounded-full border border-[#e9e1d0] bg-white" role="group" aria-label="Layout">
+				<button
+					type="button"
+					onclick={() => (view = 'grid')}
+					aria-pressed={view === 'grid'}
+					class="px-4 py-2 text-sm font-semibold transition-colors {view === 'grid'
+						? 'bg-pine text-white'
+						: 'text-pine hover:bg-cream-deep'}"
+				>
+					Grid
+				</button>
+				<button
+					type="button"
+					onclick={() => (view = 'list')}
+					aria-pressed={view === 'list'}
+					class="px-4 py-2 text-sm font-semibold transition-colors {view === 'list'
+						? 'bg-pine text-white'
+						: 'text-pine hover:bg-cream-deep'}"
+				>
+					List
+				</button>
+			</div>
+		</div>
 		{#if hasFilter}
 			<button
 				type="button"
@@ -99,6 +158,7 @@
 					location = 'any';
 					type = 'any';
 					price = 'any';
+					beds = 'any';
 				}}
 				class="rounded-full border border-[#e9e1d0] bg-white px-4 py-2 text-sm font-medium text-pine transition-colors hover:bg-cream-deep"
 			>
@@ -107,10 +167,10 @@
 		{/if}
 	</div>
 
-	{#if filtered.length > 0}
-		<div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-			{#each filtered as p (p.slug)}
-				<PropertyCard property={p} />
+	{#if sorted.length > 0}
+		<div class={view === 'grid' ? 'mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3' : 'mt-6 grid gap-5'}>
+			{#each sorted as p (p.slug)}
+				<PropertyCard property={p} variant={view} />
 			{/each}
 		</div>
 	{:else}
@@ -126,6 +186,7 @@
 					location = 'any';
 					type = 'any';
 					price = 'any';
+					beds = 'any';
 				}}
 				class="mt-6 inline-flex items-center gap-2 rounded-full bg-pine px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-pine-soft"
 			>
