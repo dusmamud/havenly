@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { site, stats, values } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 </script>
 
 <svelte:head>
@@ -33,12 +34,13 @@
 			</p>
 		</div>
 		<div class="reveal" use:reveal>
-			<img
+			<Picture
 				src="/images/interior-living.jpg"
 				alt="Bright modern living room with floor-to-ceiling windows and a beige sofa"
-				width="1920"
-				height="1280"
-				loading="lazy"
+				width={1920}
+				height={1280}
+				sizes="(max-width: 1024px) 100vw, 620px"
+				widths={[400, 800, 1200]}
 				class="aspect-[4/3] w-full rounded-[2rem] object-cover"
 			/>
 		</div>

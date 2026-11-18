@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Property } from '#lib/data/site';
 	import { formatPrice } from '#lib/data/site';
+	import Picture from '#lib/components/Picture.svelte';
 	import { isSaved, toggleSaved } from '#lib/saved.svelte';
 	import { isCompared, toggleCompare, MAX_COMPARE } from '#lib/compare.svelte';
 
@@ -73,14 +74,17 @@
 		</p>
 	{/if}
 
-	<a href="/properties/{property.slug}" class="block {isList ? 'sm:flex sm:flex-1' : ''}" aria-label="{property.title} — {formatPrice(property.price)}">
+	<a href="/properties/{property.slug}" class="block {isList ? 'sm:flex sm:flex-1' : ''}">
 		<div class="relative overflow-hidden {isList ? 'sm:w-72 shrink-0 lg:w-80' : ''}">
-			<img
+			<Picture
 				src={property.image}
 				alt="{property.title} in {property.location}"
-				width="1920"
-				height="1280"
-				loading="lazy"
+				width={1920}
+				height={1280}
+				sizes={isList
+					? '(max-width: 640px) 100vw, 320px'
+					: '(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px'}
+				widths={[400, 800, 1200, 1600]}
 				class="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] {isList
 					? 'aspect-[16/10] sm:aspect-auto sm:h-full'
 					: 'aspect-[16/10]'}"
@@ -92,7 +96,7 @@
 		<div class="p-5 {isList ? 'sm:flex sm:flex-1 sm:flex-col sm:justify-center' : ''}">
 			<div class="flex items-start justify-between gap-3">
 				<div class="min-w-0">
-					<h3 class="font-display text-xl leading-snug font-semibold text-pine">{property.title}</h3>
+					<h2 class="font-display text-xl leading-snug font-semibold text-pine">{property.title}</h2>
 					<p class="mt-1 truncate text-sm text-muted">{property.location}</p>
 				</div>
 			</div>

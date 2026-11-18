@@ -7,6 +7,8 @@
 	}
 	const { open, onclose }: Props = $props();
 
+	import Picture from '#lib/components/Picture.svelte';
+
 	const slides = ['/images/hero-villa.jpg', '/images/prop-villa-casablanca.jpg', '/images/interior-living.jpg'];
 	let slide = $state(0);
 	let videoFailed = $state(false);
@@ -58,7 +60,7 @@
 				<video
 					bind:this={videoEl}
 					src="/videos/villa-tour.mp4"
-					poster="/images/hero-villa.jpg"
+					poster="/images/hero-villa-1200.jpg"
 					controls
 					autoplay
 					playsinline
@@ -70,11 +72,14 @@
 				</video>
 			{:else}
 				<div class="relative overflow-hidden rounded-2xl">
-					<img
+					<Picture
 						src={slides[slide]}
 						alt="Tour photo {slide + 1} of {slides.length}"
-						width="1920"
-						height="960"
+						width={1920}
+						height={960}
+						loading="eager"
+						sizes="(max-width: 1024px) 100vw, 1024px"
+						widths={[400, 800, 1200, 1600]}
 						class="aspect-video w-full object-cover"
 					/>
 					<button

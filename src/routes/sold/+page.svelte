@@ -2,6 +2,7 @@
 	import PropertyCard from '#lib/components/PropertyCard.svelte';
 	import { properties, soldHomes, formatPrice } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const sold = $derived(
 		soldHomes
@@ -41,12 +42,13 @@
 			>
 				<a href="/properties/{s.slug}" class="block" aria-label="{s.property!.title} — sold for {formatPrice(s.soldPrice)}">
 					<div class="relative overflow-hidden">
-						<img
+						<Picture
 							src={s.property!.image}
 							alt="{s.property!.title} in {s.property!.location}"
-							width="1920"
-							height="1280"
-							loading="lazy"
+							width={1920}
+							height={1280}
+							sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
+							widths={[400, 800, 1200, 1600]}
 							class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
 						/>
 						<span class="absolute top-4 right-4 rounded-full bg-pine px-3 py-1 text-xs font-semibold text-white shadow-sm">

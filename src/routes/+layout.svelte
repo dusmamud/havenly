@@ -49,6 +49,9 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<link rel="preload" href="/fonts/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href="/fonts/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 	<title>Havenly — Discover Your Perfect Home | Modern Properties in Morocco</title>
 	<meta
 		name="description"

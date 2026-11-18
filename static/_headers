@@ -1,0 +1,12 @@
+# Hashed SvelteKit assets: content hash in the filename, safe to cache forever.
+/_app/immutable/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed static files: long cache, but NOT immutable — a replaced file
+# (same name) must be able to refresh. (Femine lesson 2026-11-18.)
+/images/*
+  Cache-Control: public, max-age=31536000
+/fonts/*
+  Cache-Control: public, max-age=31536000
+/videos/*
+  Cache-Control: public, max-age=31536000

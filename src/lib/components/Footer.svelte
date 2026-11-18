@@ -44,7 +44,7 @@
 			</div>
 
 			<nav aria-label="Quick links">
-				<h3 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Quick Links</h3>
+				<h2 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Quick Links</h2>
 				<ul class="mt-4 space-y-2.5 text-sm text-white/70">
 					<li><a class="hover:text-white" href="/">Home</a></li>
 					<li><a class="hover:text-white" href="/properties">Properties</a></li>
@@ -62,7 +62,7 @@
 			</nav>
 
 			<nav aria-label="Property types">
-				<h3 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Property Types</h3>
+				<h2 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Property Types</h2>
 				<ul class="mt-4 space-y-2.5 text-sm text-white/70">
 					{#each propertyTypes as type (type)}
 						<li><a class="hover:text-white" href="/properties?type={type}">{type === 'House' ? 'Houses' : type + 's'}</a></li>
@@ -73,7 +73,7 @@
 			</nav>
 
 			<div>
-				<h3 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Subscribe to Our Newsletter</h3>
+				<h2 class="text-sm font-semibold tracking-wide text-white/90 uppercase">Subscribe to Our Newsletter</h2>
 				<p class="mt-4 text-sm leading-relaxed text-white/70">Get the latest properties and real estate tips.</p>
 				{#if subscribed}
 					<p class="mt-4 rounded-xl bg-white/10 px-4 py-3 text-sm text-white" role="status">

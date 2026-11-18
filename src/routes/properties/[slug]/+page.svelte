@@ -3,6 +3,7 @@
 	import FloorPlan from '#lib/components/FloorPlan.svelte';
 	import NearbyMap from '#lib/components/NearbyMap.svelte';
 	import TourModal from '#lib/components/TourModal.svelte';
+	import Picture from '#lib/components/Picture.svelte';
 	import { site, formatPrice } from '#lib/data/site';
 	import { isSaved, toggleSaved } from '#lib/saved.svelte';
 	import { isCompared, toggleCompare, MAX_COMPARE } from '#lib/compare.svelte';
@@ -25,6 +26,10 @@
 	let formError = $state('');
 
 	const today = new Date().toISOString().slice(0, 10);
+	const heroStem = $derived(property.gallery[0].slice(0, property.gallery[0].lastIndexOf('.')));
+	const heroPreloadSrcset = $derived(
+		[400, 800, 1200, 1600].map((w) => `${heroStem}-${w}.webp ${w}w`).join(', ')
+	);
 	const savedState = $derived(isSaved(property.slug));
 	const comparedState = $derived(isCompared(property.slug));
 
@@ -96,21 +101,48 @@
 		booked = true;
 	}
 
-	const productJsonLd = $derived(
+	// RealEstateListing is the page type for a property (schema.org WebPage
+	// subtype); the physical home goes in mainEntity with its residence type,
+	// commercial terms in Offer. Same visible price/currency (USD) as the page.
+	const residenceType: Record<string, string> = {
+		Villa: 'SingleFamilyResidence',
+		Apartment: 'Apartment',
+		House: 'House',
+		Townhouse: 'SingleFamilyResidence',
+		Penthouse: 'Apartment'
+	};
+	const listingJsonLd = $derived(
 		JSON.stringify({
 			'@context': 'https://schema.org',
-			'@type': 'Product',
+			'@type': 'RealEstateListing',
 			name: property.title,
 			description: property.description,
 			image: `https://havenlly.pages.dev${property.image}`,
+			url: `https://havenlly.pages.dev/properties/${property.slug}`,
+			mainEntity: {
+				'@type': residenceType[property.type] ?? 'SingleFamilyResidence',
+				name: property.title,
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: property.city,
+					addressCountry: 'MA'
+				},
+				numberOfBedrooms: property.beds,
+				numberOfBathroomsTotal: property.baths,
+				floorSize: {
+					'@type': 'QuantitativeValue',
+					value: property.area,
+					unitCode: 'MTK'
+				}
+			},
 			offers: {
 				'@type': 'Offer',
 				price: property.price,
 				priceCurrency: 'USD',
 				availability: 'https://schema.org/InStock',
-				url: `https://havenlly.pages.dev/properties/${property.slug}`
-			},
-			brand: { '@type': 'Brand', name: 'Havenly' }
+				url: `https://havenlly.pages.dev/properties/${property.slug}`,
+				businessFunction: 'https://schema.org/Sell'
+			}
 		})
 	);
 	const breadcrumbJsonLd = $derived(
@@ -137,6 +169,8 @@
 </script>
 
 <svelte:head>
+	<!-- Preload the LCP gallery image (WebP set the <picture> will pick). -->
+	<link rel="preload" as="image" imagesrcset={heroPreloadSrcset} imagesizes="(max-width: 1024px) 100vw, 800px" fetchpriority="high" />
 	<title>{property.title} — {formatPrice(property.price)} | Havenly</title>
 	<meta name="description" content={property.description} />
 	<meta property="og:type" content="product" />
@@ -144,7 +178,7 @@
 	<meta property="og:description" content={property.description} />
 	<meta property="og:image" content="https://havenlly.pages.dev{property.image}" />
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html `<script type="application/ld+json">${productJsonLd}</script>`}
+	{@html `<script type="application/ld+json">${listingJsonLd}</script>`}
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<script type="application/ld+json">${breadcrumbJsonLd}</script>`}
 </svelte:head>
@@ -166,12 +200,15 @@
 				aria-label="Open photo gallery — {property.gallery.length} photos"
 				class="block w-full cursor-zoom-in overflow-hidden rounded-[2rem]"
 			>
-				<img
+				<Picture
 					src={property.gallery[galleryIndex]}
 					alt="{property.title} — photo {galleryIndex + 1} of {property.gallery.length}"
-					width="1920"
-					height="1280"
+					width={1920}
+					height={1280}
 					fetchpriority="high"
+					loading="eager"
+					sizes="(max-width: 1024px) 100vw, 800px"
+					widths={[400, 800, 1200, 1600]}
 					class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
 				/>
 			</button>
@@ -202,11 +239,14 @@
 								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
 							</button>
 						</div>
-						<img
+						<Picture
 							src={property.gallery[galleryIndex]}
 							alt="{property.title} — photo {galleryIndex + 1} of {property.gallery.length}"
-							width="1920"
-							height="1280"
+							width={1920}
+							height={1280}
+							loading="eager"
+							sizes="(max-width: 1024px) 100vw, 1024px"
+							widths={[400, 800, 1200, 1600]}
 							class="aspect-[16/10] w-full rounded-2xl object-cover"
 						/>
 						<button
@@ -239,7 +279,7 @@
 							? 'ring-pine'
 							: 'opacity-70 ring-transparent hover:opacity-100'}"
 					>
-						<img src={img} alt="" width="1920" height="1280" loading="lazy" class="h-16 w-24 object-cover sm:h-20 sm:w-32" />
+						<Picture src={img} alt="" width={1920} height={1280} sizes="(max-width: 640px) 96px, 128px" widths={[288]} class="h-16 w-24 object-cover sm:h-20 sm:w-32" />
 					</button>
 				{/each}
 				<button
@@ -435,12 +475,13 @@
 			<div class="rounded-3xl bg-pine p-6 text-white">
 				<h2 class="font-display text-xl font-semibold">Your advisor</h2>
 				<div class="mt-4 flex items-center gap-3">
-					<img
+					<Picture
 						src="/images/agent-yasmine.jpg"
 						alt={site.agent.name}
-						width="800"
-						height="800"
-						loading="lazy"
+						width={800}
+						height={800}
+						sizes="56px"
+						widths={[192]}
 						class="h-14 w-14 rounded-full object-cover ring-2 ring-white/30"
 					/>
 					<div>

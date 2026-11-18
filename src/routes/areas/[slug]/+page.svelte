@@ -2,10 +2,35 @@
 	import PropertyCard from '#lib/components/PropertyCard.svelte';
 	import { site, formatPrice } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const { data } = $props();
 	const city = $derived(data.city);
 	const listings = $derived(data.listings);
+	// City + ItemList schema for the listings on this page (JSON-LD only).
+	const areaJsonLd = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'City',
+			name: city.name,
+			description: city.description,
+			image: `https://havenlly.pages.dev${city.image}`,
+			url: `https://havenlly.pages.dev/areas/${city.slug}`
+		})
+	);
+	const areaListJsonLd = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'ItemList',
+			name: `Homes in ${city.name} — Havenly`,
+			itemListElement: listings.map((p, i) => ({
+				'@type': 'ListItem',
+				position: i + 1,
+				name: p.title,
+				url: `https://havenlly.pages.dev/properties/${p.slug}`
+			}))
+		})
+	);
 	const avg = $derived(
 		listings.length > 0
 			? Math.round(listings.reduce((s, p) => s + p.price, 0) / listings.length)
@@ -14,6 +39,10 @@
 </script>
 
 <svelte:head>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${areaJsonLd}</script>`}
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${areaListJsonLd}</script>`}
 	<title>Homes in {city.name} | Havenly</title>
 	<meta name="description" content={city.description} />
 	<meta property="og:title" content="Homes in {city.name} | Havenly" />
@@ -31,12 +60,15 @@
 	</nav>
 
 	<div class="relative mt-6 overflow-hidden rounded-[2rem]">
-		<img
+		<Picture
 			src={city.image}
 			alt="{city.name}, Morocco"
-			width="1600"
-			height="1067"
+			width={1600}
+			height={1067}
 			fetchpriority="high"
+			loading="eager"
+			sizes="(max-width: 1280px) 100vw, 1280px"
+			widths={[400, 800, 1200]}
 			class="aspect-[21/9] w-full object-cover"
 		/>
 		<div

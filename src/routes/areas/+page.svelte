@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cities, cityStats, formatPrice } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const itemListJsonLd = JSON.stringify({
 		'@context': 'https://schema.org',
@@ -47,12 +48,13 @@
 				data-reveal-delay={(i % 3) * 100}
 				aria-label="Guide to homes in {city.name}"
 			>
-				<img
+				<Picture
 					src={city.image}
 					alt="{city.name}, Morocco"
-					width="1600"
-					height="1067"
-					loading="lazy"
+					width={1600}
+					height={1067}
+					sizes="(max-width: 1024px) 100vw, 620px"
+					widths={[400, 800, 1200]}
 					class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
 				/>
 				<div

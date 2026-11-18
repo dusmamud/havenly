@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { site } from '#lib/data/site';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const { data } = $props();
 	const post = $derived(data.post);
@@ -21,7 +22,8 @@
 			headline: post.title,
 			description: post.excerpt,
 			image: `https://havenlly.pages.dev${post.image}`,
-			datePublished: post.date,
+			datePublished: post.date + 'T00:00:00+05:30',
+			dateModified: post.date + 'T00:00:00+05:30',
 			wordCount,
 			author: { '@type': 'Organization', name: 'Havenly', url: site.url + '/' },
 			publisher: { '@type': 'Organization', name: 'Havenly', url: site.url + '/' },
@@ -61,12 +63,15 @@
 		</p>
 	</header>
 
-	<img
+	<Picture
 		src={post.image}
 		alt={post.title}
-		width="1920"
-		height="1280"
+		width={1920}
+		height={1280}
 		fetchpriority="high"
+		loading="eager"
+		sizes="(max-width: 768px) 100vw, 768px"
+		widths={[400, 800, 1200]}
 		class="mt-8 aspect-[16/10] w-full rounded-[2rem] object-cover"
 	/>
 
@@ -96,10 +101,10 @@
 				{#each others as o (o.slug)}
 					<article class="overflow-hidden rounded-3xl bg-white">
 						<a href="/blog/{o.slug}" class="block">
-							<img src={o.image} alt={o.title} width="1920" height="1280" loading="lazy" class="aspect-[16/10] w-full object-cover" />
+							<Picture src={o.image} alt={o.title} width={1920} height={1280} sizes="(max-width: 640px) 100vw, 400px" widths={[400, 800, 1200]} class="aspect-[16/10] w-full object-cover" />
 						</a>
 						<div class="p-5">
-							<p class="text-xs font-semibold tracking-wide text-gold uppercase">{o.category} · {o.readTime}</p>
+							<p class="text-xs font-semibold tracking-wide text-gold-deep uppercase">{o.category} · {o.readTime}</p>
 							<h3 class="mt-2 font-display text-lg leading-snug font-semibold text-pine">
 								<a href="/blog/{o.slug}" class="hover:underline">{o.title}</a>
 							</h3>

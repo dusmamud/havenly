@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { testimonials } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const aggregateJsonLd = JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'RealEstateAgent',
 		name: 'Havenly',
+		image: 'https://havenlly.pages.dev/images/og/og-default.png',
 		aggregateRating: {
 			'@type': 'AggregateRating',
 			ratingValue: '5',
@@ -53,7 +55,7 @@
 				<span class="font-display text-4xl leading-none text-gold" aria-hidden="true">“</span>
 				<blockquote class="mt-1 text-[15px] leading-relaxed text-ink/85">“{t.quote}”</blockquote>
 				<figcaption class="mt-5 flex items-center gap-3">
-					<img src={t.avatar} alt="Portrait of {t.name}" width="1600" height="1600" loading="lazy" class="h-11 w-11 rounded-full object-cover" />
+					<Picture src={t.avatar} alt="Portrait of {t.name}" width={1600} height={1600} sizes="44px" widths={[192]} class="h-11 w-11 rounded-full object-cover" />
 					<div class="min-w-0">
 						<p class="truncate text-sm font-semibold text-pine">{t.name}</p>
 						<p class="text-xs text-muted">{t.city}</p>

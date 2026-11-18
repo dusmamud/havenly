@@ -3,6 +3,7 @@
 	import PropertyCard from '#lib/components/PropertyCard.svelte';
 	import StatsBand from '#lib/components/StatsBand.svelte';
 	import TourModal from '#lib/components/TourModal.svelte';
+	import Picture from '#lib/components/Picture.svelte';
 	import { properties, testimonials, site, cities, cityStats, formatPrice } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
 
@@ -42,6 +43,7 @@
 		'@type': 'RealEstateAgent',
 		name: 'Havenly',
 		url: site.url + '/',
+		image: site.url + '/images/og/og-default.png',
 		telephone: site.phone,
 		email: site.email,
 		priceRange: '$280,000 - $780,000',
@@ -56,6 +58,14 @@
 </script>
 
 <svelte:head>
+	<!-- Preload the LCP hero image (WebP set the <picture> will pick). -->
+	<link
+		rel="preload"
+		as="image"
+		imagesrcset="/images/hero-villa-400.webp 400w, /images/hero-villa-800.webp 800w, /images/hero-villa-1200.webp 1200w, /images/hero-villa-1600.webp 1600w"
+		imagesizes="100vw"
+		fetchpriority="high"
+	/>
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<script type="application/ld+json">${agentJsonLd}</script>`}
 </svelte:head>
@@ -64,12 +74,15 @@
      headline on the sky itself (no black overlay, ever). -->
 <section class="mx-auto max-w-7xl px-3 pt-4 sm:px-6 lg:px-8">
 	<div class="relative overflow-hidden rounded-[2rem] bg-cream-deep">
-		<img
+		<Picture
 			src="/images/hero-villa.jpg"
 			alt="Modern villa at dusk with a swimming pool and palm trees, open sky on the left"
-			width="1920"
-			height="960"
+			width={1920}
+			height={960}
 			fetchpriority="high"
+			loading="eager"
+			sizes="100vw"
+			widths={[400, 800, 1200, 1600]}
 			class="kenburns absolute inset-0 h-full w-full object-cover object-[68%_center]"
 		/>
 		<!-- Soft light wash from the left so the dark headline always reads —
@@ -163,12 +176,13 @@
 <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
 	<div class="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr_0.85fr] lg:gap-12">
 		<div class="reveal" use:reveal>
-			<img
+			<Picture
 				src="/images/interior-living.jpg"
 				alt="Bright modern living room with floor-to-ceiling windows and a beige sofa"
-				width="1920"
-				height="1280"
-				loading="lazy"
+				width={1920}
+				height={1280}
+				sizes="(max-width: 1024px) 100vw, 620px"
+				widths={[400, 800, 1200]}
 				class="aspect-[4/3] w-full rounded-[2rem] object-cover"
 			/>
 		</div>
@@ -313,12 +327,13 @@
 				data-reveal-delay={(i % 3) * 100}
 				aria-label="Explore homes in {city.name}"
 			>
-				<img
+				<Picture
 					src={city.image}
 					alt="{city.name}, Morocco"
-					width="1600"
-					height="1067"
-					loading="lazy"
+					width={1600}
+					height={1067}
+					sizes="(max-width: 1024px) 100vw, 620px"
+					widths={[400, 800, 1200]}
 					class="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] sm:aspect-[16/11]"
 				/>
 				<div
@@ -395,7 +410,7 @@
 				<span class="font-display text-4xl leading-none text-gold" aria-hidden="true">“</span>
 				<blockquote class="mt-1 text-[15px] leading-relaxed text-ink/85">“{t.quote}”</blockquote>
 				<figcaption class="mt-5 flex items-center gap-3">
-					<img src={t.avatar} alt="Portrait of {t.name}" width="1600" height="1600" loading="lazy" class="h-11 w-11 rounded-full object-cover" />
+					<Picture src={t.avatar} alt="Portrait of {t.name}" width={1600} height={1600} sizes="44px" widths={[192]} class="h-11 w-11 rounded-full object-cover" />
 					<div class="min-w-0">
 						<p class="truncate text-sm font-semibold text-pine">{t.name}</p>
 						<p class="text-xs text-muted">{t.city}</p>

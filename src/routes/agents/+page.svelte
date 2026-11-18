@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { agents } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 </script>
 
 <svelte:head>
@@ -33,17 +34,18 @@
 				use:reveal
 				data-reveal-delay={i * 120}
 			>
-				<img
+				<Picture
 					src={a.image}
 					alt="Portrait of {a.name}"
-					width="800"
-					height="800"
-					loading="lazy"
+					width={800}
+					height={800}
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+					widths={[400, 800]}
 					class="aspect-square w-full object-cover object-top"
 				/>
 				<div class="p-6">
 					<h2 class="font-display text-2xl font-semibold text-pine">{a.name}</h2>
-					<p class="mt-1 text-sm font-semibold text-gold">{a.role}</p>
+					<p class="mt-1 text-sm font-semibold text-gold-deep">{a.role}</p>
 					<p class="mt-3 text-[15px] leading-relaxed text-muted">{a.bio}</p>
 					<dl class="mt-5 space-y-2 text-sm">
 						<div class="flex justify-between gap-3">

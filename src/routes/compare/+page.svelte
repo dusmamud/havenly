@@ -2,6 +2,7 @@
 	import { properties, formatPrice } from '#lib/data/site';
 	import { compared, removeCompare, MAX_COMPARE } from '#lib/compare.svelte';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 
 	const chosen = $derived(
 		compared.map((slug) => properties.find((p) => p.slug === slug)).filter((p) => p !== undefined)
@@ -68,12 +69,13 @@
 						<th scope="col" class="w-36 p-5 text-sm font-semibold text-muted">Home</th>
 						{#each chosen as p (p.slug)}
 							<th scope="col" class="min-w-48 p-5">
-								<img
+								<Picture
 									src={p.image}
 									alt={p.title}
-									width="1920"
-									height="1280"
-									loading="lazy"
+									width={1920}
+									height={1280}
+									sizes="192px"
+									widths={[400]}
 									class="aspect-[16/10] w-full rounded-2xl object-cover"
 								/>
 								<a href="/properties/{p.slug}" class="mt-3 block font-display text-lg leading-snug font-semibold text-pine hover:underline">

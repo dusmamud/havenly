@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { posts } from '#lib/data/site';
 	import { reveal } from '#lib/reveal';
+	import Picture from '#lib/components/Picture.svelte';
 </script>
 
 <svelte:head>
@@ -27,17 +28,18 @@
 		{#each posts as post (post.slug)}
 			<article class="reveal flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_2px_16px_rgba(15,42,31,0.06)]" use:reveal>
 				<a href="/blog/{post.slug}" class="block">
-					<img
+					<Picture
 						src={post.image}
 						alt={post.title}
-						width="1920"
-						height="1280"
-						loading="lazy"
+						width={1920}
+						height={1280}
+						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+						widths={[400, 800, 1200]}
 						class="aspect-[16/10] w-full object-cover"
 					/>
 				</a>
 				<div class="flex flex-1 flex-col p-6">
-					<p class="text-xs font-semibold tracking-wide text-gold uppercase">
+					<p class="text-xs font-semibold tracking-wide text-gold-deep uppercase">
 						{post.category} · {post.readTime}
 					</p>
 					<h2 class="mt-2 font-display text-[1.4rem] leading-snug font-semibold text-pine">
